@@ -86,14 +86,14 @@ if __name__ == "__main__":
     print(summary)
     # 输出结果
     all_data = dict(sorted(all_data.items(), key=lambda x: x[1], reverse=False))
-    if len(all_data) > 50:
-        # Get top 10 and bottom 10
-        top_10 = dict(list(all_data.items())[:20])
-        bottom_10 = dict(list(all_data.items())[-20:])
-        # Add a separator between top and bottom groups
-        middle_values = list(all_data.values())[20:-20]
-        separator = {"中间省略": round(sum(middle_values), 2)}  # Sum of middle values
-        all_data = {**top_10, **separator, **bottom_10}
+    # if len(all_data) > 50:
+    #     # Get top 10 and bottom 10
+    #     top_10 = dict(list(all_data.items())[:20])
+    #     bottom_10 = dict(list(all_data.items())[-20:])
+    #     # Add a separator between top and bottom groups
+    #     middle_values = list(all_data.values())[20:-20]
+    #     separator = {"中间省略": round(sum(middle_values), 2)}  # Sum of middle values
+    #     all_data = {**top_10, **separator, **bottom_10}
     
     if platform.system() == "Darwin":
         plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
@@ -115,5 +115,5 @@ if __name__ == "__main__":
     plt.title(f"白鲸大学食堂消费情况\n({post_data['sdate']} 至 {post_data['edate']})")
     plt.xlabel("消费金额（元）")
     plt.text(0.8, 0.1, summary, ha='center', va='center', transform=plt.gca().transAxes)
-    plt.savefig("result.png")
+    plt.savefig("result.png",bbox_inches='tight')
     plt.show()
